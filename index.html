@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Google Sheet Tab Slideshow</title>
+  <style>
+    body {
+      margin: 0;
+      background: #f0f0f0;
+    }
+    iframe {
+      width: 100%;
+      height: 100vh;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <iframe id="sheetFrame" src=""></iframe>
+
+  <script>
+    const sheetUrls = [
+      "https://docs.google.com/spreadsheets/d/e/2PACX-1vSKEONksyqY8LTZYM2Fnmy1FBj6hdvPAYw9BeTl7FV-ElRUgT6Pa1rVuiMaKPuQ93zYVKTHya7jv6oM/pubhtml?gid=1843018645&single=true",
+      "https://docs.google.com/spreadsheets/d/e/2PACX-1vSKEONksyqY8LTZYM2Fnmy1FBj6hdvPAYw9BeTl7FV-ElRUgT6Pa1rVuiMaKPuQ93zYVKTHya7jv6oM/pubhtml?gid=939877245&single=true",
+      "https://docs.google.com/spreadsheets/d/e/2PACX-1vSKEONksyqY8LTZYM2Fnmy1FBj6hdvPAYw9BeTl7FV-ElRUgT6Pa1rVuiMaKPuQ93zYVKTHya7jv6oM/pubhtml?gid=272756083&single=true"
+    ];
+
+    let currentIndex = 0;
+    const interval = 10000; // 10 seconds
+
+    function showNextSheet() {
+      document.getElementById("sheetFrame").src = sheetUrls[currentIndex];
+      currentIndex = (currentIndex + 1) % sheetUrls.length;
+    }
+
+    showNextSheet();
+    setInterval(showNextSheet, interval);
+  </script>
+</body>
+</html>
